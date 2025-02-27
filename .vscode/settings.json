@@ -1,0 +1,9 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "cmake.ignoreCMakeListsMissing": true,
+    "files.associations": {
+        "wifi.h": "c",
+        "ui.h": "c",
+        "wifi_save.h": "c"
+    }
+}
