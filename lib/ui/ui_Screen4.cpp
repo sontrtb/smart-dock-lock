@@ -37,5 +37,6 @@ void ui_Screen4_screen_init(void)
     lv_obj_remove_flag(ui_Button20, LV_OBJ_FLAG_SCROLLABLE);
 
     lv_obj_add_event_cb(ui_Screen4, ui_event_Screen4, LV_EVENT_ALL, NULL);
+    
     lv_obj_add_event_cb(ui_Button20, ui_event_Button20, LV_EVENT_ALL, NULL);
 }

@@ -7,7 +7,8 @@
 #include <EEPROM.h>
 #include "wifi_save.h"
 #include <WiFi.h>
-#include "mqtt_utils.h"
+#include <PubSubClient.h>
+#include "../../src/mqtt_handler.h"
 
 void onSelectWifiItem(char *net)
 {

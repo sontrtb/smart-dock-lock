@@ -4,22 +4,8 @@
 #include <SPI.h>
 #include "lvgl.h"
 #include "ui.h"
-#include <PubSubClient.h>
 #include <WiFi.h>
-#include "mqtt_utils.h"
-#include <PubSubClient.h>
-
-// // Global
-// static char wifi_name[32] = "";
-
-// Cấu hình MQTT
-char *mqtt_server = "broker.hivemq.com";
-int mqtt_port = 1883;
-char *mqtt_topic = "sonfedev";
-int LEDpin = 22;
-
-WiFiClient espClient;
-PubSubClient client(espClient);
+#include "mqtt_handler.h"
 
 /*Don't forget to set Sketchbook location in File/Preferences to the path of your UI project (the parent foder of this INO file)*/
 /*Change to your screen resolution*/
@@ -97,6 +83,10 @@ void setup()
 {
 
     Serial.begin(115200);
+
+    pinMode(LEDpin, OUTPUT);
+    digitalWrite(LEDpin, HIGH);
+
     lv_init();
 
     // Initialise the touchscreen
@@ -126,7 +116,10 @@ void setup()
 
 void loop()
 {
-    lv_timer_handler(); /* let the GUI do its work */
+    lv_timer_handler();
+    if (WiFi.status() == WL_CONNECTED) {
+        handleMQTT();
+    }
+    checkDoorState();
     delay(5);
-    mqttLoop();
 }

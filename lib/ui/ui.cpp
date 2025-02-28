@@ -6,6 +6,7 @@
 #include "ui.h"
 #include "ui_helpers.h"
 #include "wifi_save.h"
+#include "../../src/mqtt_handler.h"
 
 ///////////////////// VARIABLES ////////////////////
 
@@ -155,7 +156,14 @@ void ui_event_Keyboard2(lv_event_t *e)
 
     if (event_code == LV_EVENT_READY)
     {
-        _ui_screen_change(&ui_Screen7, LV_SCR_LOAD_ANIM_FADE_ON, 0, 0, &ui_Screen7_screen_init);
+        const char* code = lv_textarea_get_text(ui_TextArea3);
+        const char* codePass = "123456";
+        if(strcmp(code, codePass) == 0) {
+            handleOPen();
+        }
+        
+    } else {
+
     }
 }
 
