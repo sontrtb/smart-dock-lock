@@ -32,6 +32,7 @@ extern lv_obj_t *ui_Label1;
 void ui_event_Button1( lv_event_t * e);
 extern lv_obj_t *ui_Button1;
 extern lv_obj_t *ui_Label2;
+
 // CUSTOM VARIABLES
 
 // SCREEN: ui_Screen2
@@ -77,6 +78,8 @@ extern lv_obj_t *ui_Screen5;
 void ui_event_Keyboard2( lv_event_t * e);
 extern lv_obj_t *ui_Keyboard2;
 extern lv_obj_t *ui_TextArea3;
+extern lv_obj_t *ui_Label11;
+void ui_event_Screen5( lv_event_t * e);
 // CUSTOM VARIABLES
 
 // SCREEN: ui_Screen6
@@ -84,13 +87,18 @@ void ui_Screen6_screen_init(void);
 extern lv_obj_t *ui_Screen6;
 void ui_event_Image2( lv_event_t * e);
 extern lv_obj_t *ui_Image2;
-extern lv_obj_t *ui_TextArea2;
 // CUSTOM VARIABLES
 
 // SCREEN: ui_Screen7
 void ui_Screen7_screen_init(void);
 extern lv_obj_t *ui_Screen7;
 extern lv_obj_t *ui_Label3;
+// CUSTOM VARIABLES
+
+// SCREEN: ui_Screen0
+void ui_Screen0_screen_init(void);
+extern lv_obj_t *ui_Screen0;
+extern lv_obj_t *ui_Label4;
 // CUSTOM VARIABLES
 
 // EVENTS

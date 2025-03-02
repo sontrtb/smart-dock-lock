@@ -20,16 +20,6 @@ lv_obj_set_align( ui_Image2, LV_ALIGN_CENTER );
 lv_obj_add_flag( ui_Image2, LV_OBJ_FLAG_CLICKABLE );   /// Flags
 lv_obj_remove_flag( ui_Image2, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 
-ui_TextArea2 = lv_textarea_create(ui_Screen6);
-lv_obj_set_width( ui_TextArea2, 150);
-lv_obj_set_height( ui_TextArea2, 70);
-lv_obj_set_x( ui_TextArea2, -427 );
-lv_obj_set_y( ui_TextArea2, -81 );
-lv_obj_set_align( ui_TextArea2, LV_ALIGN_CENTER );
-lv_textarea_set_placeholder_text(ui_TextArea2,"Placeholder...");
-
-
-
 lv_obj_add_event_cb(ui_Image2, ui_event_Image2, LV_EVENT_ALL, NULL);
 
 }

@@ -24,7 +24,6 @@ void onSelectWifiPassword(const char *password)
 
 void connectToWiFi()
 {   
-	delay(1000);
     WiFiSave wifiSave;
     String wifi_name = wifiSave.getWiFiName();
     String wifi_password = wifiSave.getWiFiPassword();
