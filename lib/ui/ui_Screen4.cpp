@@ -27,16 +27,5 @@ void ui_Screen4_screen_init(void)
     lv_obj_set_align(ui_Label10, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label10, "Connecting...");
 
-    ui_Button20 = lv_button_create(ui_Screen4);
-    lv_obj_set_width(ui_Button20, 30);
-    lv_obj_set_height(ui_Button20, 26);
-    lv_obj_set_x(ui_Button20, 10);
-    lv_obj_set_y(ui_Button20, 60);
-    lv_obj_set_align(ui_Button20, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_Button20, LV_OBJ_FLAG_SCROLL_ON_FOCUS); /// Flags
-    lv_obj_remove_flag(ui_Button20, LV_OBJ_FLAG_SCROLLABLE);
-
     lv_obj_add_event_cb(ui_Screen4, ui_event_Screen4, LV_EVENT_ALL, NULL);
-    
-    lv_obj_add_event_cb(ui_Button20, ui_event_Button20, LV_EVENT_ALL, NULL);
 }

@@ -30,22 +30,18 @@ void connectToWiFi()
 
     WiFi.begin(wifi_name, wifi_password);
 
-    printf(wifi_name.c_str());
+    // Dùng biến static để đảm bảo giá trị không bị mất
+    static uint32_t connectionStartTime = millis();
+    
+    lv_timer_t *connectTimer = lv_timer_create([](lv_timer_t *timer) {
+        uint32_t startTime = *((uint32_t*)timer->user_data); // Lấy thời gian bắt đầu kết nối
 
-    int attempts = 0;
-    while (WiFi.status() != WL_CONNECTED && attempts < 20)
-    {
-        delay(500);
-        attempts++;
-    }
-
-    if (WiFi.status() == WL_CONNECTED)
-    {
-        setupMQTT();
-    }
-    else
-    {
-        printf("_ui_screen_change");
-        _ui_screen_change( &ui_Screen2, LV_SCR_LOAD_ANIM_MOVE_LEFT, 300, 0, &ui_Screen2_screen_init);
-    }
+        if (WiFi.status() == WL_CONNECTED) {
+            setupMQTT();
+            lv_timer_del(timer);
+        } else if (millis() - startTime > 10000) { 
+            _ui_screen_change(&ui_Screen2, LV_SCR_LOAD_ANIM_MOVE_LEFT, 300, 0, &ui_Screen2_screen_init);
+            lv_timer_del(timer);
+        }
+    }, 100, &connectionStartTime); // Check every 100ms
 }

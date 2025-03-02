@@ -36,6 +36,7 @@ lv_obj_t *ui_Container2;
 void ui_event_Panel2(lv_event_t *e, char *net);
 lv_obj_t *ui_Panel2;
 lv_obj_t *ui_Label5;
+lv_obj_t *ui_Button_Refetch_Wifi;
 // CUSTOM VARIABLES
 
 // SCREEN: ui_Screen3
@@ -56,10 +57,7 @@ void ui_Screen4_screen_init(void);
 lv_obj_t *ui_Screen4;
 lv_obj_t *ui_Spinner1;
 lv_obj_t *ui_Label10;
-void ui_event_Screen4(lv_event_t *e);
-void ui_event_Button20(lv_event_t *e);
-lv_obj_t *ui_Button20;
-// CUSTOM VARIABLES
+void ui_event_Screen4(lv_event_t *e);// CUSTOM VARIABLES
 
 // SCREEN: ui_Screen5
 void ui_Screen5_screen_init(void);
@@ -176,7 +174,7 @@ void ui_event_Keyboard2(lv_event_t *e)
         const char* codePass = "123456";
         if(strcmp(code, codePass) == 0) {
             lv_label_set_text(ui_Label11,"");
-            handleOPen();
+            handleOpen();
         } else
         {
             lv_label_set_text(ui_Label11,"Password is incorrect");
@@ -210,16 +208,6 @@ void ui_event_Screen4(lv_event_t *e)
         // Create a timer that will start the connection after the UI has rendered
         wifi_connect_timer = lv_timer_create(start_wifi_connection, 500, NULL);
         lv_timer_set_repeat_count(wifi_connect_timer, 1); // Run only once
-    }
-}
-
-void ui_event_Button20(lv_event_t *e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-
-    if (event_code == LV_EVENT_CLICKED)
-    {
-        _ui_screen_change(&ui_Screen2, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 300, 0, &ui_Screen2_screen_init);
     }
 }
 

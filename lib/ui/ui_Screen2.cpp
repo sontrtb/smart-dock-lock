@@ -94,6 +94,27 @@ lv_obj_set_y( ui_Container2, 15 );
 lv_obj_set_align( ui_Container2, LV_ALIGN_CENTER );
 lv_obj_remove_flag( ui_Container2, LV_OBJ_FLAG_CLICKABLE );    /// Flags
 
+
+ui_Button_Refetch_Wifi = lv_button_create(ui_Screen2);
+lv_obj_set_width(ui_Button_Refetch_Wifi, 30);
+lv_obj_set_height(ui_Button_Refetch_Wifi, 30);
+lv_obj_set_x(ui_Button_Refetch_Wifi, 120);
+lv_obj_set_y(ui_Button_Refetch_Wifi, 100);
+lv_obj_set_align(ui_Button_Refetch_Wifi, LV_ALIGN_CENTER);
+lv_obj_add_flag(ui_Button_Refetch_Wifi, LV_OBJ_FLAG_SCROLL_ON_FOCUS);
+lv_obj_remove_flag(ui_Button_Refetch_Wifi, LV_OBJ_FLAG_SCROLLABLE);
+
+// lv_obj_add_event_cb(ui_Button_Refetch_Wifi, [](lv_event_t *e)
+// {
+//     lv_event_code_t event_code = lv_event_get_code(e);
+
+//     if (event_code == LV_EVENT_CLICKED)
+//     {
+//         scanWiFiNetworks();
+//     }
+// }, LV_EVENT_ALL, NULL);
+
 lv_obj_add_event_cb(ui_Button4, ui_event_Button4, LV_EVENT_ALL, NULL);
-    scanWiFiNetworks();
+
+scanWiFiNetworks();
 }

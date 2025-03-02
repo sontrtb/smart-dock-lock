@@ -21,6 +21,6 @@ void reconnect();
 void setupMQTT();
 void handleMQTT();
 void checkDoorState();
-void handleOPen();
+void handleOpen();
 
 #endif // MQTT_HANDLER_H

@@ -47,6 +47,7 @@ extern lv_obj_t *ui_Container2;
 void ui_event_Panel2( lv_event_t * e, char *net);
 extern lv_obj_t *ui_Panel2;
 extern lv_obj_t *ui_Label5;
+extern lv_obj_t *ui_Button_Refetch_Wifi;
 // CUSTOM VARIABLES
 
 // SCREEN: ui_Screen3
@@ -67,8 +68,6 @@ void ui_Screen4_screen_init(void);
 extern lv_obj_t *ui_Screen4;
 extern lv_obj_t *ui_Spinner1;
 extern lv_obj_t *ui_Label10;
-void ui_event_Button20( lv_event_t * e);
-extern lv_obj_t *ui_Button20;
 void ui_event_Screen4( lv_event_t * e);
 // CUSTOM VARIABLES
 
