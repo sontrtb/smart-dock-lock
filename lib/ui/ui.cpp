@@ -11,7 +11,7 @@
 static lv_timer_t *wifi_connect_timer = NULL;
 static lv_timer_t *check_credentials_timer = NULL;
 
-static lv_timer_t *back_home_timer = NULL;
+lv_timer_t *back_home_timer = NULL;
 
 ///////////////////// VARIABLES ////////////////////
 
@@ -212,6 +212,7 @@ void ui_event_Screen4(lv_event_t *e)
 
 void back_home(lv_timer_t *timer)
 {  
+    lv_timer_del(back_home_timer);
     lv_textarea_set_text(ui_TextArea3, ""); 
     _ui_screen_change(&ui_Screen6, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 300, 0, &ui_Screen6_screen_init); 
 }
