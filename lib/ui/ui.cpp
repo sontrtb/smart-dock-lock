@@ -57,13 +57,13 @@ void ui_Screen4_screen_init(void);
 lv_obj_t *ui_Screen4;
 lv_obj_t *ui_Spinner1;
 lv_obj_t *ui_Label10;
-void ui_event_Screen4(lv_event_t *e);// CUSTOM VARIABLES
+void ui_event_Screen4(lv_event_t *e); // CUSTOM VARIABLES
 
 // SCREEN: ui_Screen5
 void ui_Screen5_screen_init(void);
 lv_obj_t *ui_Screen5;
 void ui_event_Keyboard2(lv_event_t *e);
-void ui_event_Screen5(lv_event_t *e); 
+void ui_event_Screen5(lv_event_t *e);
 lv_obj_t *ui_Keyboard2;
 lv_obj_t *ui_TextArea3;
 lv_obj_t *ui_Label11;
@@ -164,22 +164,24 @@ void ui_event_Keyboard2(lv_event_t *e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
 
-    if (event_code == LV_EVENT_VALUE_CHANGED) {
+    if (event_code == LV_EVENT_VALUE_CHANGED)
+    {
         lv_timer_reset(back_home_timer);
     }
 
     if (event_code == LV_EVENT_READY)
     {
 
-        const char* code = lv_textarea_get_text(ui_TextArea3);
+        const char *code = lv_textarea_get_text(ui_TextArea3);
 
-        if(strlen(code) == 0) {
+        if (strlen(code) == 0)
+        {
             return;
         };
-        
-        lv_label_set_text(ui_Label11,"");
+
+        lv_label_set_text(ui_Label11, "");
         sendOTP(code);
-        lv_textarea_set_text(ui_TextArea3, "");        
+        lv_textarea_set_text(ui_TextArea3, "");
     }
 }
 
@@ -211,10 +213,15 @@ void ui_event_Screen4(lv_event_t *e)
 }
 
 void back_home(lv_timer_t *timer)
-{  
-    lv_timer_del(back_home_timer);
-    lv_textarea_set_text(ui_TextArea3, ""); 
-    _ui_screen_change(&ui_Screen6, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 300, 0, &ui_Screen6_screen_init); 
+{
+    if (back_home_timer != NULL)
+    {
+        lv_timer_del(back_home_timer);
+        back_home_timer = NULL;
+    }
+
+    lv_textarea_set_text(ui_TextArea3, "");
+    _ui_screen_change(&ui_Screen6, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 300, 0, &ui_Screen6_screen_init);
 }
 
 void ui_event_Screen5(lv_event_t *e)
@@ -266,7 +273,7 @@ void ui_init(void)
 
     // Always start with Screen1
     lv_disp_load_scr(ui_Screen0);
-    
+
     // Create a timer to check credentials after UI is fully loaded
     check_credentials_timer = lv_timer_create(check_credentials_and_load_screen, 500, NULL);
     lv_timer_set_repeat_count(check_credentials_timer, 1); // Run only once

@@ -24,7 +24,6 @@ void handleOpen()
   
   if(back_home_timer != NULL) {
     lv_timer_del(back_home_timer);
-    back_home_timer = NULL;
   }
   
   _ui_screen_change(&ui_Screen7, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_Screen7_screen_init);
