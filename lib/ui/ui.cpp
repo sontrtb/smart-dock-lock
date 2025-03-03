@@ -8,8 +8,6 @@
 #include "wifi_save.h"
 #include "../../src/mqtt_handler.h"
 
-const char * otp = "";
-
 static lv_timer_t *wifi_connect_timer = NULL;
 static lv_timer_t *check_credentials_timer = NULL;
 
@@ -74,8 +72,8 @@ lv_obj_t *ui_Label11;
 // SCREEN: ui_Screen6
 void ui_Screen6_screen_init(void);
 lv_obj_t *ui_Screen6;
+lv_obj_t *ui_Label_Home;
 void ui_event_Image2(lv_event_t *e);
-lv_obj_t *ui_Image2;
 // CUSTOM VARIABLES
 
 // SCREEN: ui_Screen7
@@ -172,27 +170,15 @@ void ui_event_Keyboard2(lv_event_t *e)
 
     if (event_code == LV_EVENT_READY)
     {
-        const char* codePass = "123456";
 
         const char* code = lv_textarea_get_text(ui_TextArea3);
 
         if(strlen(code) == 0) {
             return;
-        }
-
-        printf("ssds:");
-        printf(otp);
-        printf("\n");
-       
-        if(strcmp(code, codePass) == 0 || strcmp(code, otp) == 0) {
-            lv_label_set_text(ui_Label11,"");
-            otp = "";
-            handleOpen();
-        } else
-        {
-            lv_label_set_text(ui_Label11,"Password is incorrect");
-        }
+        };
         
+        lv_label_set_text(ui_Label11,"");
+        sendOTP(code);
         lv_textarea_set_text(ui_TextArea3, "");        
     }
 }
@@ -226,7 +212,6 @@ void ui_event_Screen4(lv_event_t *e)
 
 void back_home(lv_timer_t *timer)
 {  
-    otp = "";
     lv_textarea_set_text(ui_TextArea3, ""); 
     _ui_screen_change(&ui_Screen6, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 300, 0, &ui_Screen6_screen_init); 
 }

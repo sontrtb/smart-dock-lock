@@ -10,16 +10,15 @@ void ui_Screen6_screen_init(void)
 ui_Screen6 = lv_obj_create(NULL);
 lv_obj_remove_flag( ui_Screen6, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 
-ui_Image2 = lv_image_create(ui_Screen6);
-lv_image_set_src(ui_Image2, &ui_img_home_png);
-lv_obj_set_width( ui_Image2, LV_SIZE_CONTENT);  /// 325
-lv_obj_set_height( ui_Image2, LV_SIZE_CONTENT);   /// 246
-lv_obj_set_x( ui_Image2, -2 );
-lv_obj_set_y( ui_Image2, -1 );
-lv_obj_set_align( ui_Image2, LV_ALIGN_CENTER );
-lv_obj_add_flag( ui_Image2, LV_OBJ_FLAG_CLICKABLE );   /// Flags
-lv_obj_remove_flag( ui_Image2, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
+ui_Label_Home = lv_label_create(ui_Screen6);
+lv_obj_set_width( ui_Label_Home, LV_SIZE_CONTENT);  /// 1
+lv_obj_set_height( ui_Label_Home, LV_SIZE_CONTENT);   /// 1
+lv_obj_set_x( ui_Label_Home, -2 );
+lv_obj_set_y( ui_Label_Home, -1 );
+lv_obj_set_align( ui_Label_Home, LV_ALIGN_CENTER );
+lv_label_set_text(ui_Label_Home,"Home !!!");
+lv_obj_set_style_text_font(ui_Label_Home, &lv_font_montserrat_20, LV_PART_MAIN| LV_STATE_DEFAULT);
 
-lv_obj_add_event_cb(ui_Image2, ui_event_Image2, LV_EVENT_ALL, NULL);
+lv_obj_add_event_cb(ui_Screen6, ui_event_Image2, LV_EVENT_ALL, NULL);
 
 }

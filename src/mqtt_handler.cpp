@@ -27,14 +27,6 @@ void handleOpen()
   doorOpeningState = true;
 }
 
-void handleOpenOTP(String otpValue)
-{
-  static std::string otpStr;
-  otpStr = otpValue.c_str();
-  otp = otpStr.c_str();
-  _ui_screen_change(&ui_Screen5, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_Screen5_screen_init);
-}
-
 void checkDoorState()
 {
   if (doorOpeningState && (millis() - openStartTime >= 5000))
@@ -81,10 +73,6 @@ void callback(char *topic, byte *payload, unsigned int length)
   if (type == "OPEN")
   {
     handleOpen();
-  }
-  else if (type == "OPEN_OTP")
-  {
-    handleOpenOTP(data);
   }
 }
 

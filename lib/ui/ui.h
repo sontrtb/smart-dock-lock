@@ -25,8 +25,6 @@ extern "C" {
 #include "ui_helpers.h"
 #include "ui_events.h"
 
-extern const char *otp;
-
 // SCREEN: ui_Screen1
 void ui_Screen1_screen_init(void);
 extern lv_obj_t *ui_Screen1;
@@ -87,7 +85,7 @@ void ui_event_Screen5( lv_event_t * e);
 void ui_Screen6_screen_init(void);
 extern lv_obj_t *ui_Screen6;
 void ui_event_Image2( lv_event_t * e);
-extern lv_obj_t *ui_Image2;
+extern lv_obj_t *ui_Label_Home;
 // CUSTOM VARIABLES
 
 // SCREEN: ui_Screen7
@@ -106,7 +104,7 @@ extern lv_obj_t *ui_Label4;
 extern lv_obj_t *ui____initial_actions0;
 
 // IMAGES AND IMAGE SETS
-LV_IMG_DECLARE( ui_img_home_png);   // assets/home.png
+// LV_IMG_DECLARE( ui_img_home_png);   // assets/home.png
 
 // UI INIT
 void ui_init(void);

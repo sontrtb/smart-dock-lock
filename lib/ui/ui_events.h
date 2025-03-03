@@ -13,6 +13,7 @@ extern "C" {
 void onSelectWifiItem(char * net);
 void onSelectWifiPassword(const char *password);
 void connectToWiFi();
+void sendOTP(const char *otp);
 
 #ifdef __cplusplus
 } /*extern "C"*/

@@ -9,21 +9,23 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include "../../src/mqtt_handler.h"
+#include <HTTPClient.h>
+#include <ArduinoJson.h>
 
 void onSelectWifiItem(char *net)
 {
-	WiFiSave wifiSave;
-	wifiSave.saveWiFiNameCredentials(String(net));
+    WiFiSave wifiSave;
+    wifiSave.saveWiFiNameCredentials(String(net));
 }
 
 void onSelectWifiPassword(const char *password)
 {
-	WiFiSave wifiSave;
-	wifiSave.saveWiFiPasswordCredentials(String(password));
+    WiFiSave wifiSave;
+    wifiSave.saveWiFiPasswordCredentials(String(password));
 }
 
 void connectToWiFi()
-{   
+{
     WiFiSave wifiSave;
     String wifi_name = wifiSave.getWiFiName();
     String wifi_password = wifiSave.getWiFiPassword();
@@ -32,8 +34,9 @@ void connectToWiFi()
 
     // Dùng biến static để đảm bảo giá trị không bị mất
     static uint32_t connectionStartTime = millis();
-    
-    lv_timer_t *connectTimer = lv_timer_create([](lv_timer_t *timer) {
+
+    lv_timer_t *connectTimer = lv_timer_create([](lv_timer_t *timer)
+                                               {
         uint32_t startTime = *((uint32_t*)timer->user_data); // Lấy thời gian bắt đầu kết nối
 
         if (WiFi.status() == WL_CONNECTED) {
@@ -42,6 +45,57 @@ void connectToWiFi()
         } else if (millis() - startTime > 10000) { 
             _ui_screen_change(&ui_Screen2, LV_SCR_LOAD_ANIM_MOVE_LEFT, 300, 0, &ui_Screen2_screen_init);
             lv_timer_del(timer);
+        } }, 100, &connectionStartTime); // Check every 100ms
+}
+
+const char *serverUrl = "https://device.xbot.vn/api/public/otp";
+void sendOTP(const char *otp)
+{
+    if (WiFi.status() == WL_CONNECTED)
+    {
+        HTTPClient http;
+        http.begin(serverUrl);
+        http.addHeader("Content-Type", "application/json");
+
+        DynamicJsonDocument doc(256);
+        doc["otp"] = otp;
+        String jsonString;
+        serializeJson(doc, jsonString);
+
+        int httpResponseCode = http.POST(jsonString);
+
+        if (httpResponseCode > 0)
+        {
+
+            String response = http.getString();
+            DynamicJsonDocument doc(1024);
+            DeserializationError error = deserializeJson(doc, response.c_str());
+
+            if (error)
+            {
+                lv_label_set_text(ui_Label11, "Error");
+                return;
+            }
+
+            boolean result = doc["result"];
+
+            if (result)
+            {
+                handleOpen();
+            }
+            else
+            {
+                lv_label_set_text(ui_Label11, "Password is incorrect");
+            }
         }
-    }, 100, &connectionStartTime); // Check every 100ms
+        else
+        {
+            lv_label_set_text(ui_Label11, "Error Wifi");
+        }
+        http.end();
+    }
+    else
+    {
+        Serial.println("WiFi chưa kết nối!");
+    }
 }
