@@ -8,6 +8,8 @@
 #include "wifi_save.h"
 #include "../../src/mqtt_handler.h"
 
+const char * otp = "";
+
 static lv_timer_t *wifi_connect_timer = NULL;
 static lv_timer_t *check_credentials_timer = NULL;
 
@@ -170,10 +172,21 @@ void ui_event_Keyboard2(lv_event_t *e)
 
     if (event_code == LV_EVENT_READY)
     {
-        const char* code = lv_textarea_get_text(ui_TextArea3);
         const char* codePass = "123456";
-        if(strcmp(code, codePass) == 0) {
+
+        const char* code = lv_textarea_get_text(ui_TextArea3);
+
+        if(strlen(code) == 0) {
+            return;
+        }
+
+        printf("ssds:");
+        printf(otp);
+        printf("\n");
+       
+        if(strcmp(code, codePass) == 0 || strcmp(code, otp) == 0) {
             lv_label_set_text(ui_Label11,"");
+            otp = "";
             handleOpen();
         } else
         {
@@ -212,9 +225,10 @@ void ui_event_Screen4(lv_event_t *e)
 }
 
 void back_home(lv_timer_t *timer)
-{
-    _ui_screen_change(&ui_Screen6, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 300, 0, &ui_Screen6_screen_init);
-    lv_textarea_set_text(ui_TextArea3, "");  
+{  
+    otp = "";
+    lv_textarea_set_text(ui_TextArea3, ""); 
+    _ui_screen_change(&ui_Screen6, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 300, 0, &ui_Screen6_screen_init); 
 }
 
 void ui_event_Screen5(lv_event_t *e)

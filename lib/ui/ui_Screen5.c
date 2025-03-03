@@ -24,7 +24,7 @@ lv_obj_set_height( ui_TextArea3, 39);
 lv_obj_set_x( ui_TextArea3, -2 );
 lv_obj_set_y( ui_TextArea3, -89 );
 lv_obj_set_align( ui_TextArea3, LV_ALIGN_CENTER );
-lv_textarea_set_placeholder_text(ui_TextArea3,"Code...");
+lv_textarea_set_placeholder_text(ui_TextArea3,"Password");
 
 
 ui_Label11 = lv_label_create(ui_Screen5);
