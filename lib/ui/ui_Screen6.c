@@ -20,8 +20,7 @@ void ui_Screen6_screen_init(void)
     lv_obj_set_align(ui_Label_Clock, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label_Clock, "Đang cập nhật...");  // Hiển thị khi đang khởi tạo
     lv_obj_set_style_text_font(ui_Label_Clock, &lv_font_montserrat_48, LV_PART_MAIN| LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(ui_Label_Clock, lv_color_hex(0x00FF00), LV_PART_MAIN | LV_STATE_DEFAULT);
-    
+
     // Khởi tạo SNTP để lấy thời gian từ internet
     initialize_sntp();
 

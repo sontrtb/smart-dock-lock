@@ -17,7 +17,6 @@ lv_obj_set_x( ui_Label3, -7 );
 lv_obj_set_y( ui_Label3, -2 );
 lv_obj_set_align( ui_Label3, LV_ALIGN_CENTER );
 lv_label_set_text(ui_Label3,"OPEN");
-lv_obj_set_style_text_color(ui_Label3, lv_color_hex(0x16F364), LV_PART_MAIN | LV_STATE_DEFAULT );
 lv_obj_set_style_text_opa(ui_Label3, 255, LV_PART_MAIN| LV_STATE_DEFAULT);
 lv_obj_set_style_text_font(ui_Label3, &lv_font_montserrat_48, LV_PART_MAIN| LV_STATE_DEFAULT);
 
