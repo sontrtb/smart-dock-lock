@@ -85,7 +85,7 @@ void setup()
     Serial.begin(115200);
 
     pinMode(LEDpin, OUTPUT);
-    digitalWrite(LEDpin, HIGH);
+    digitalWrite(LEDpin, LOW);
 
     lv_init();
 

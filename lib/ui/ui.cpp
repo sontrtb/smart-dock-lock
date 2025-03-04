@@ -72,8 +72,8 @@ lv_obj_t *ui_Label11;
 // SCREEN: ui_Screen6
 void ui_Screen6_screen_init(void);
 lv_obj_t *ui_Screen6;
-lv_obj_t *ui_Label_Home;
-void ui_event_Image2(lv_event_t *e);
+lv_obj_t *ui_Label_Clock;
+void ui_event_Screen6(lv_event_t *e);
 // CUSTOM VARIABLES
 
 // SCREEN: ui_Screen7
@@ -185,7 +185,7 @@ void ui_event_Keyboard2(lv_event_t *e)
     }
 }
 
-void ui_event_Image2(lv_event_t *e)
+void ui_event_Screen6(lv_event_t *e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
 

@@ -86,8 +86,8 @@ void ui_event_Screen5( lv_event_t * e);
 // SCREEN: ui_Screen6
 void ui_Screen6_screen_init(void);
 extern lv_obj_t *ui_Screen6;
-void ui_event_Image2( lv_event_t * e);
-extern lv_obj_t *ui_Label_Home;
+void ui_event_Screen6( lv_event_t * e);
+extern lv_obj_t * ui_Label_Clock;
 // CUSTOM VARIABLES
 
 // SCREEN: ui_Screen7

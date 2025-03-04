@@ -20,12 +20,8 @@ unsigned long lastReconnectAttempt = 0; // For non-blocking reconnect
 
 void handleOpen()
 {
-  digitalWrite(LEDpin, LOW);
-  
-  if(back_home_timer != NULL) {
-    lv_timer_del(back_home_timer);
-  }
-  
+  digitalWrite(LEDpin, HIGH);
+
   _ui_screen_change(&ui_Screen7, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_Screen7_screen_init);
 
   openStartTime = millis();
@@ -37,7 +33,7 @@ void checkDoorState()
   if (doorOpeningState && (millis() - openStartTime >= 5000))
   {
     // 5 seconds passed, close door
-    digitalWrite(LEDpin, HIGH);
+    digitalWrite(LEDpin, LOW);
     _ui_screen_change(&ui_Screen6, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_Screen6_screen_init);
     doorOpeningState = false;
   }
